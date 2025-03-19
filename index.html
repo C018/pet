@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>域名出租展示页面</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 20px;
+    }
+    header, footer {
+      text-align: center;
+      padding: 15px 0;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+    }
+    footer {
+      background-color: #ddd;
+      color: #333;
+      font-size: 14px;
+    }
+    .container {
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .domain-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .domain-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding: 15px 0;
+    }
+    .domain-item:last-child {
+      border-bottom: none;
+    }
+    .domain-info {
+      flex: 1;
+    }
+    .domain-name {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      margin: 0 0 5px;
+    }
+    .domain-desc {
+      font-size: 14px;
+      color: #666;
+    }
+    .domain-price {
+      font-size: 18px;
+      color: #e67e22;
+      margin-right: 15px;
+    }
+    .buy-btn {
+      text-decoration: none;
+      background-color: #e67e22;
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .buy-btn:hover {
+      background-color: #d35400;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>域名出售展示</h1>
+    <p>欢迎选购优质域名</p>
+  </header>
+  <div class="container">
+    <ul class="domain-list">
+      <li class="domain-item">
+        <div class="domain-info">
+          <h2 class="domain-name">yxc.pet</h2>
+          <p class="domain-desc">云小宠，PET为供与宠物相关的公司、兽医、动物救援及宠物爱好者所使用之域名。</p>
+        </div>
+        <div class="domain-price">$100</div>
+        <a href="#" class="buy-btn">购买</a>
+      </li>
+    </ul>
+  </div>
+  <footer>
+    <p>&copy;2023 域名出售. 版权所有</p>
+  </footer>
+</body>
+</html>
