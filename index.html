@@ -4,32 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>域名出租展示页面</title>
+  <!-- 引入 Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    /* 动画 - 背景渐变动画 */
+    @keyframes backgroundAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    /* 动画 - 页面淡入效果 */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* 全局设置 */
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      margin: 0 auto;
-      max-width: 960px;
+      font-family: 'Roboto', 'Open Sans', Arial, sans-serif;
+      margin: 0;
       padding: 20px;
-    }
-    header, footer {
-      text-align: center;
-      padding: 15px 0;
-    }
-    header {
-      background-color: #333;
-      color: #fff;
-    }
-    footer {
-      background-color: #ddd;
+      animation: fadeIn 0.8s ease-out both;
+      /* 背景渐变动画 */
+      background: linear-gradient(135deg, #f7f9fc, #e2ebf2);
+      background-size: 400% 400%;
+      animation: backgroundAnimation 20s ease infinite, fadeIn 0.8s ease-out both;
       color: #333;
-      font-size: 14px;
     }
+    /* 居中主容器 */
+    .wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    /* 页眉 */
+    header {
+      text-align: center;
+      padding: 30px 20px;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #005c97, #363795);
+      border-radius: 8px;
+      color: #fff;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 40px;
+      letter-spacing: 1px;
+    }
+    header p {
+      font-size: 18px;
+      margin-top: 10px;
+      opacity: 0.9;
+    }
+    /* 主体内容 */
     .container {
       background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 20px;
-      margin-top: 20px;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
     .domain-list {
       list-style: none;
@@ -38,65 +69,115 @@
     }
     .domain-item {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #eee;
-      padding: 15px 0;
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      transition: box-shadow 0.3s, transform 0.3s;
     }
-    .domain-item:last-child {
-      border-bottom: none;
+    .domain-item:hover {
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      transform: translateY(-3px);
     }
     .domain-info {
-      flex: 1;
+      flex: 1 1 60%;
+      margin-bottom: 15px;
     }
     .domain-name {
-      font-size: 20px;
-      font-weight: bold;
-      color: #333;
-      margin: 0 0 5px;
+      font-size: 26px;
+      font-weight: 700;
+      margin: 0 0 8px;
+      color: #2c3e50;
     }
     .domain-desc {
-      font-size: 14px;
+      font-size: 16px;
       color: #666;
+      margin: 0;
+      line-height: 1.5;
     }
     .domain-price {
-      font-size: 18px;
+      font-size: 22px;
+      font-weight: bold;
       color: #e67e22;
-      margin-right: 15px;
+      margin-right: 20px;
+      flex: 0 0 auto;
     }
     .action-btn {
       text-decoration: none;
       background-color: #e67e22;
       color: #fff;
-      padding: 8px 20px;
+      padding: 12px 30px;
       border-radius: 5px;
-      transition: background-color 0.3s;
+      font-size: 16px;
+      font-weight: 700;
+      display: inline-block;
+      transition: background-color 0.3s, transform 0.3s;
+      flex: 0 0 auto;
     }
     .action-btn:hover {
       background-color: #d35400;
+      transform: translateY(-2px);
+    }
+    /* 页脚 */
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 30px;
+      background-color: #f1f1f1;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #777;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    footer a {
+      color: #0056b3;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-bottom 0.3s;
+    }
+    footer a:hover {
+      border-bottom: 1px solid #0056b3;
+    }
+    /* 响应式调整 */
+    @media (max-width: 600px) {
+      .domain-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .domain-price, .action-btn {
+        margin-top: 10px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>域名出租展示</h1>
-    <p>欢迎选租优质域名</p>
-  </header>
-  <div class="container">
-    <ul class="domain-list">
-      <li class="domain-item">
-        <div class="domain-info">
-          <h2 class="domain-name">yxc.pet</h2>
-          <p class="domain-desc">云小宠，PET为供与宠物相关的公司、兽医、动物救援及宠物爱好者所使用之域名。</p>
-        </div>
-        <div class="domain-price">$99/年</div>
-        <!-- 使用 mailto 链接触发邮件发送 -->
-        <a href="mailto:me@okr.pub?subject=租用%20yxc.pet%20域名&body=您好，我有兴趣租用yxc.pet域名，请与我联系。" class="action-btn">租用</a>
-      </li>
-    </ul>
+  <div class="wrapper">
+    <header>
+      <h1>域名出租展示</h1>
+      <p>欢迎选租优质域名</p>
+    </header>
+    <div class="container">
+      <ul class="domain-list">
+        <li class="domain-item">
+          <div class="domain-info">
+            <h2 class="domain-name">yxc.pet</h2>
+            <p class="domain-desc">
+              云小宠，专为宠物相关的公司、兽医、动物救援及宠物爱好者打造的专业域名。品质与信赖的象征，助你打造品牌新形象！
+            </p>
+          </div>
+          <div class="domain-price">$99/年</div>
+          <!-- 使用 mailto 链接触发邮件发送 -->
+          <a href="mailto:me@okr.pub?subject=租用%20yxc.pet%20域名&body=您好，我有兴趣租用yxc.pet域名，请与我联系。" class="action-btn">租用</a>
+        </li>
+        <!-- 可以继续增加其他域名项目 -->
+      </ul>
+    </div>
+    <footer>
+      <p>联系方式: <a href="https://t.me/JiangChu" target="_blank">©Mr. Jiang</a></p>
+    </footer>
   </div>
-  <footer>
-    <p>联系方式: <a href="https://t.me/JiangChu" target="_blank">©Mr. Jiang</a></p>
-  </footer>
 </body>
 </html>
